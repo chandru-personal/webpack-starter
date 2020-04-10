@@ -48,7 +48,7 @@ console.log('> > > Common Type copnversion < < <');
 console.log( Number.parseInt('120') );
 console.log( Number.parseFloat('12.56') );
 
-//controlling loops
+//  controlling loops
 console.log('> > > Controlling Loops < < <');
 console.log('break');
 for (let i= 0; i < 5; i++) {
@@ -66,3 +66,49 @@ for (let i= 0; i < 5; i++) {
 }
 
 // ============== LANGUAGE FEATURES - END ==================
+// ============== OPERATORS - START ==================
+
+// Equality Operator
+console.log('> > > Equality Operator < < <');
+// True
+console.log(1 === 1);
+console.log(1 == '1'); // double equals convert to common type and compare
+console.log(1 == true);
+// False
+console.log(1 !== 1);
+console.log(1 != '1');
+console.log(1 === '1');
+
+console.log('> > > Unary Operators < < <');
+// var++, var--
+let number1 = 100;
+console.log(number1++); //100
+console.log(number1); //101
+// ++var, --Var
+let number2 = 200;
+console.log(++number2); //201
+// +var, -var
+let number3 = '300';
+console.log(+number3); // 300
+
+// Logical (Boolean) Operators
+console.log('> > > Logical(Boolean) Operators < < <');
+let userSettings = { name: 'Chandru' };
+let defaultSettings = { name: 'Default' };
+console.log( userSettings || defaultSettings); //Chandru
+console.log( userSettings && defaultSettings); //Default
+
+// Relarional Operators <, >, >=, <=
+console.log('> > > Relational Operators < < <');
+
+// Conditional Operators
+console.log('> > > Conditional Operators < < <');
+console.log( (1 > 2) ? 'Yes' : 'No');
+
+// Assignment Operators
+// var1 += 20; var1 -= 20; var1 /= 20; var1 *= 20; var1 %= 20
+console.log('> > > Assignment Operators < < <');
+let year = 2020;
+year += 1;
+console.log(year);
+// ============== OPERATORS - END ==================
