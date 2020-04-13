@@ -111,4 +111,147 @@ console.log('> > > Assignment Operators < < <');
 let year = 2020;
 year += 1;
 console.log(year);
+
 // ============== OPERATORS - END ==================
+// ============== FUNCTIONS AND SCOPE - START ==================
+
+// Function Scope
+console.log('> > > Function scope < < <');
+
+/*
+
+function startCar1(carId) {
+    let message = 'Starting';
+}
+startCar1(123);
+console.log(message); // will have a ReferenceError due to out of function scope.
+
+*/
+// Function Scope example 1
+function startCar2(carId) {
+    let message = 'Starting..';
+    let startFn = function trueKey() {
+        console.log(message); // Starting..
+    };
+    startFn();
+}
+startCar2(124);
+// Function Scope example 2
+function startCar3(carId) {
+    let message = 'Starting..';
+    let startFn = function trueKey() {
+        let message = 'Override';
+    };
+    startFn();
+    console.log(message); // Starting..
+}
+startCar3(125);
+
+// Block Scope
+console.log('> > > Block Scope < < <');
+// Block Scope Example 1
+/*
+
+if (true) {
+    let message = 'Equal';
+}
+console.log(message); // will get ReferenceError because 'let' will maintain block scope.
+
+*/
+
+if (true) {
+    var message = 'Equal';
+}
+console.log(message); // Equal (because 'var' will be hoisted)
+
+// Block Scope Example 2
+let message1 = 'Outside';
+if (true) {
+    let message1 = 'Override';
+    console.log(message1); // Override
+}
+console.log(message1); // Outside
+
+// IIFE's
+console.log('> > > IIFE\'s < < <');
+let app = (function() {
+    let carId = 123;
+    console.log(' called IIFE ');
+    return {};
+})();
+console.log(app);
+
+// Closures
+console.log('> > > Closures < < <');
+let application = (function() {
+    let carId = 123;
+    let getId = function() {
+        return carId;
+    };
+    return {
+        getId: getId
+    };
+})();
+console.log(application.getId());
+
+// The this Keyword
+console.log('> > > The this Keyword < < <');
+let o = {
+    carId: 1230,
+    getId: function() {
+        console.log(this);
+        return this.carId;
+    }
+};
+console.log(o.getId());
+
+// call and apply
+console.log('> > > call and apply < < <');
+let p = {
+    carId: 123,
+    getId: function() {
+        return this.carId;
+    }
+};
+let newCar = {
+    carId: 456
+};
+console.log(p.getId.call(newCar));
+
+// note: main difference between call and apply is we can pass arguments in apply
+
+let q = {
+    carId: 123,
+    getId: function(prefix) {
+        return prefix + this.carId;
+    }
+};
+console.log(q.getId.apply(newCar, ['ID: '])); // ID: 456
+
+
+// bind
+console.log('> > > bind < < <');
+let r = {
+    carId: 123,
+    getId: function() {
+        return this.carId;
+    }
+};
+let newFn = r.getId.bind(newCar);
+console.log(newFn()); //456
+
+// Arrow Function
+console.log('> > > Arrow Function < < <');
+let getId = (prefix, sufix) => {
+    return prefix + 123 + sufix;
+};
+console.log( getId('ID: ', '!') );
+
+// Default Parameters
+console.log('> > > Default Parameters < < <');
+let trackFlight = function(flightId, country= 'USA') {
+    console.log('Tracking flight ' + flightId + ' in ' + country +'.');
+};
+trackFlight(123);
+trackFlight(456, 'India');
+// ============== FUNCTIONS AND SCOPE - END ==================
