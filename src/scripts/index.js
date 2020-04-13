@@ -254,4 +254,79 @@ let trackFlight = function(flightId, country= 'USA') {
 };
 trackFlight(123);
 trackFlight(456, 'India');
+
 // ============== FUNCTIONS AND SCOPE - END ==================
+// ============== OBJECTS AND ARRAYS - START ==================
+
+// Constructor Function
+console.log('> > > Constructor Function < < <');
+function van (id) {
+    this.vanId = id;
+    this.start = function() {
+        console.log('start: ' + this.vanId);
+    };
+};
+let vehicle1 = new van(789);
+vehicle1.start();
+
+// Prototypes
+console.log('> > > Prototypes < < <');
+function bus (id) {
+    this.busId = id;
+};
+bus.prototype.start = function() {
+    console.log('start: ' + this.busId);
+};
+let vehicle2 = new bus(234);
+vehicle2.start();
+
+// Expanding Objects Using Prototypes
+console.log('> > > Expanding Objects Using Prototypes < < <');
+String.prototype.hello = function() {
+    return this.toString() + ' hello';
+};
+console.log('foo'.hello());
+
+// JSON
+console.log('> > > JSON < < <');
+let jsonIn = 
+`
+    [
+        {"carId": 123},
+        {"carId": 124},
+        {"carId": 125}
+    ]
+`;
+
+let allCarIds = JSON.parse(jsonIn);
+console.log(allCarIds);
+console.log(JSON.stringify(allCarIds));
+
+
+// Array Iteration
+
+let cars = [
+    {id: 123, style: 'sedan'},
+    {id: 234, style: 'convertible'},
+    {id: 345, style: 'sedan'}
+];
+
+cars.forEach((car) => {
+    console.log(car);
+});
+
+cars.forEach((car, index) => {
+    console.log(car, index);
+});
+
+let convertibleCars = cars.filter(car =>
+    car.style === 'convertible'
+);
+console.log(convertibleCars);
+
+let idsValid = cars.every(car => car.id > 0);
+console.log(idsValid);
+
+let findCar = cars.find(car => car.id > 150);
+console.log(findCar);
+// ============== OBJECTS AND ARRAYS - END ==================
