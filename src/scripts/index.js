@@ -98,7 +98,7 @@ let defaultSettings = { name: 'Default' };
 console.log( userSettings || defaultSettings); //Chandru
 console.log( userSettings && defaultSettings); //Default
 
-// Relarional Operators <, >, >=, <=
+// Relational Operators <, >, >=, <=
 console.log('> > > Relational Operators < < <');
 
 // Conditional Operators
@@ -330,3 +330,67 @@ console.log(idsValid);
 let findCar = cars.find(car => car.id > 150);
 console.log(findCar);
 // ============== OBJECTS AND ARRAYS - END ==================
+// ============== CLASSES AND MODULES - START ==================
+
+// Class Basics
+console.log('> > > Class Basics < < <');
+class Pen1 {
+
+}
+
+let pen1 = new Pen1();
+console.log(pen1);
+
+// Constructors and Properties
+console.log('> > > Constructors and Properties < < <');
+class Pen2 {
+    constructor(id) {
+        this.id = id;
+    }
+}
+let pen2 = new Pen2(123);
+console.log(pen2.id);
+
+// Methods
+console.log('> > > Methods < < <');
+class Pen3 {
+    constructor(id) {
+        this.id = id;
+    }
+    identify() {
+        return `Pen Id: ${this.id}`;
+    }
+}
+let pen3 = new Pen3(234);
+console.log(pen3.identify());
+
+// Inheritance
+console.log('> > > Inheritance < < <');
+class Vehicle {
+    constructor() {
+        this.type = 'car';
+    }
+    start() {
+        return `starting ${this.type}`;
+    }
+}
+
+class Car extends Vehicle {
+    // constructor() {
+    //     super();
+    // }
+    // start() {
+    //     return 'This is ' + super.start();
+    // }
+}
+
+let car5 = new Car();
+console.log(car5.start());
+
+// Creating and Importing a module
+console.log('> > > Creating and Importing a Moudule < < <');
+import { Car6 } from './models/car.js';
+let car6 = new Car6(789, 'mustang');
+console.log(car6.start());
+
+// ============== CLASSES AND MODULES - END ==================
