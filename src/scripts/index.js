@@ -394,3 +394,53 @@ let car6 = new Car6(789, 'mustang');
 console.log(car6.start());
 
 // ============== CLASSES AND MODULES - END ==================
+// ============== Programing the BOM and DOM - START ===========
+
+// BOM - Browser Object Model, DOM - Document Object Model
+
+// The Window Object
+console.log('> > > The Window Object < < <');
+//PROPERIES - document, location, console, innerHeight, innerWidth, pageXOffset, pageYOffset.
+//METHODS - alert(), back(), confirm()
+//EVENTS - (not common)
+console.log(window);
+
+// Timers
+console.log('> > > Timers < < <');
+
+let timeoutId = setTimeout(function() {
+    console.log('2 second passed...');
+},2000);
+//if need to cancel
+clearTimeout(timeoutId);
+
+let intervalId = setInterval(function(){
+    console.log('called every 1 second');
+}, 1000);
+//if need to cancel
+clearInterval(intervalId);
+
+// The location Object
+console.log('> > > The location Object < < <');
+//PROPERTIES - href, hostname, port, pathname, search
+//METHODS - assign(), reload()
+//EVENTS - (not common)
+console.log(location.href, location.hostname,location.port, location.pathname, location.search);
+
+// The document Object
+console.log('> > > The document Object < < <');
+//PROPERTIES - body, forms, links
+//METHODS - cerateElement(), createEvent(), getElementById(), getElementsByClassName()
+//EVENTS - onload, onclick, onkeypressed
+let el1 = document.getElementById('first');
+console.log(el1);
+let els1 = document.getElementsByClassName('p1');
+console.log(els1);
+let els2 = document.getElementsByTagName('p');
+console.log(els2);
+els1[1].textContent = 'New text content..';
+els1[1].setAttribute('name', 'nameValue');
+el1.classList.add('myClassName');
+el1.style.color = 'orange';
+// ============== Programing the BOM and DOM - END ===========
+
