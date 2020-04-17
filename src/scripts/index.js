@@ -483,7 +483,7 @@ finally {
 console.log('> > > Promise < < <');
 let promise = new Promise(
     function(resolve, reject) {
-        setTimeout(resolve, 2000, 'someValue');
+        setTimeout(resolve, 100, 'someValue');
     }
 );
 console.log(promise);
@@ -491,4 +491,43 @@ promise.then(
     value => console.log('fulfilled: ', value, promise),
     error => console.log('rejected: ', error, promise)
 );
+
 // ============== PROMISES AND ERROR HANDLING - END ===========
+// ============== Data Access Using HTTP - START ==============
+
+// HTTP Request Using XHR (XML HTTP Request)
+console.log('> > > HTTP Request Using XHR < < <');
+let xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState === 4 && this.status === 200) {
+        console.log('xhttp Response using XHR', JSON.parse(this.responseText));
+    }
+};
+xhttp.open('GET', 'https://5e9906c75eabe7001681c661.mockapi.io/api/v1/users', true);
+xhttp.send();
+
+// HTTP Request Using jQuery
+console.log('> > > HTTP Request Using jQuery < < <');
+
+import $ from 'jquery';
+let promise1 = $.get('https://5e9906c75eabe7001681c661.mockapi.io/api/v1/users');
+
+promise1.then(
+    data => console.log('success using jQuery: ', data),
+    error => console.log('error using jQuery: ', error)
+);
+
+// HTTP POST Using jQuery
+console.log('> > > HTTP POST Using Jquery < < <');
+let user = {
+    name: "Chandru Parkunan",
+    avatar: "128.jpg",
+    email: "chandru@mail.com",
+    imageUrl: "https://unsplash.it/50?image=1"
+};
+let promise2 = $.post('https://5e9906c75eabe7001681c661.mockapi.io/api/v1/users', user);
+promise2.then(
+    data => console.log('POST success: ', data),
+    error => console.log('POst Error: ', error)
+);
+// ============== Data Access Using HTTP - END ==============
