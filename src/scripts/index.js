@@ -443,4 +443,52 @@ els1[1].setAttribute('name', 'nameValue');
 el1.classList.add('myClassName');
 el1.style.color = 'orange';
 // ============== Programing the BOM and DOM - END ===========
+// ============== PROMISES AND ERROR HANDLING - START ===========
+// Errors Handling Using try and catch
+console.log('> > > Errors Handling Using try and catch < < <');
+try {
+    let car7 = newCar7;
+} 
+catch(error) {
+    console.log('error: ', error);
+}
+console.log('after try catch');
 
+// finally
+console.log('> > > finally < < <');
+try {
+    let car8 = newCar8;
+}
+catch(error){
+    console.log('catch block will executes when try block has error: ', error);
+}
+finally {
+    console.log('finally block always executes..');
+}
+
+// Developer Defined Errors
+console.log('> > > Developer Defined Errors < < <');
+try {
+    // some code here..
+    throw new Error('my custom error...');
+}
+catch(error){
+    console.log('catch block will executes when try block has error: ', error);
+}
+finally {
+    console.log('finally block always executes..');
+}
+
+// Promise
+console.log('> > > Promise < < <');
+let promise = new Promise(
+    function(resolve, reject) {
+        setTimeout(resolve, 2000, 'someValue');
+    }
+);
+console.log(promise);
+promise.then(
+    value => console.log('fulfilled: ', value, promise),
+    error => console.log('rejected: ', error, promise)
+);
+// ============== PROMISES AND ERROR HANDLING - END ===========
